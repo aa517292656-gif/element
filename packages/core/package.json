@@ -15,5 +15,8 @@
   },
   "peerDependencies": {
     "vue": "^3.5.24"
+  },
+  "dependencies": {
+    "@element/components": "workspace:^1.0.0"
   }
 }

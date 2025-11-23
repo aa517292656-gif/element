@@ -2,6 +2,14 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "baseUrl": ".",
+    "paths": {
+      "@element/core": ["../core"],
+      "@element/components": ["../components"],
+      "@element/utils": ["../utils"],
+      "@element/hooks": ["../hooks"],
+      "@element/theme": ["../theme"]
+    },
     "types": ["vite/client"],
 
     /* Linting */
