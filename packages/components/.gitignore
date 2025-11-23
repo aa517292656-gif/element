@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.local
+
+# TypeScript
+*.tsbuildinfo
+.tmp/
+
+# Logs
+*.log
+
+# Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Cache
+.cache/
+*.tmp
+
