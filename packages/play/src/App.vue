@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <ElButton>Button</ElButton>
+  <ElButton type="success" size="small" plain round>Button</ElButton>
 </template>
