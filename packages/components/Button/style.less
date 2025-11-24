@@ -1,0 +1,619 @@
+// Button 组件样式
+// 参考 Element Plus 设计风格
+
+// 颜色变量定义（基于 Element Plus 官方颜色）
+@button-default-color: #606266;
+@button-default-bg-color: #ffffff;
+@button-default-border-color: #dcdfe6;
+
+@button-primary-color: #ffffff;
+@button-primary-bg-color: #409eff;
+@button-primary-border-color: #409eff;
+@button-primary-hover-bg-color: #66b1ff;
+@button-primary-hover-border-color: #66b1ff;
+@button-primary-active-bg-color: #3a8ee6;
+@button-primary-active-border-color: #3a8ee6;
+
+@button-success-color: #ffffff;
+@button-success-bg-color: #67c23a;
+@button-success-border-color: #67c23a;
+@button-success-hover-bg-color: #85ce61;
+@button-success-hover-border-color: #85ce61;
+@button-success-active-bg-color: #5daf34;
+@button-success-active-border-color: #5daf34;
+
+@button-warning-color: #ffffff;
+@button-warning-bg-color: #e6a23c;
+@button-warning-border-color: #e6a23c;
+@button-warning-hover-bg-color: #ebb563;
+@button-warning-hover-border-color: #ebb563;
+@button-warning-active-bg-color: #cf9236;
+@button-warning-active-border-color: #cf9236;
+
+@button-danger-color: #ffffff;
+@button-danger-bg-color: #f56c6c;
+@button-danger-border-color: #f56c6c;
+@button-danger-hover-bg-color: #f78989;
+@button-danger-hover-border-color: #f78989;
+@button-danger-active-bg-color: #dd6161;
+@button-danger-active-border-color: #dd6161;
+
+@button-info-color: #ffffff;
+@button-info-bg-color: #909399;
+@button-info-border-color: #909399;
+@button-info-hover-bg-color: #a6a9ad;
+@button-info-hover-border-color: #a6a9ad;
+@button-info-active-bg-color: #82848a;
+@button-info-active-border-color: #82848a;
+
+// 禁用状态颜色
+@button-disabled-color: #c0c4cc;
+@button-disabled-bg-color: #ffffff;
+@button-disabled-border-color: #e4e7ed;
+
+// 朴素按钮颜色
+@button-plain-primary-color: #409eff;
+@button-plain-primary-bg-color: #ecf5ff;
+@button-plain-primary-border-color: #b3d8ff;
+
+@button-plain-success-color: #67c23a;
+@button-plain-success-bg-color: #f0f9ff;
+@button-plain-success-border-color: #c2e7b0;
+
+@button-plain-warning-color: #e6a23c;
+@button-plain-warning-bg-color: #fdf6ec;
+@button-plain-warning-border-color: #f5dab1;
+
+@button-plain-danger-color: #f56c6c;
+@button-plain-danger-bg-color: #fef0f0;
+@button-plain-danger-border-color: #fbc4c4;
+
+@button-plain-info-color: #909399;
+@button-plain-info-bg-color: #f4f4f5;
+@button-plain-info-border-color: #d3d4d6;
+
+// 基础样式
+.el-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: @button-default-bg-color;
+  border: 1px solid @button-default-border-color;
+  color: @button-default-color;
+  -webkit-appearance: none;
+  appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  font-weight: 500;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  user-select: none;
+  vertical-align: middle;
+
+  // 基础交互状态
+  &:hover {
+    color: @button-primary-bg-color;
+    border-color: @button-primary-border-color;
+    background-color: #ecf5ff;
+  }
+
+  &:active {
+    color: @button-primary-active-bg-color;
+    border-color: @button-primary-active-border-color;
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid @button-primary-bg-color;
+    outline-offset: 1px;
+  }
+
+  // 禁用状态
+  &.is-disabled,
+  &:disabled {
+    color: @button-disabled-color;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: @button-disabled-bg-color;
+    border-color: @button-disabled-border-color;
+
+    &:hover,
+    &:focus {
+      color: @button-disabled-color;
+      cursor: not-allowed;
+      background-image: none;
+      background-color: @button-disabled-bg-color;
+      border-color: @button-disabled-border-color;
+    }
+  }
+
+  // 加载状态
+  &.is-loading {
+    position: relative;
+    pointer-events: none;
+
+    &::before {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+  }
+
+  // 圆角按钮
+  &.is-round {
+    border-radius: 20px;
+    padding: 12px 23px;
+  }
+
+  // 圆形按钮
+  &.is-circle {
+    border-radius: 50%;
+    padding: 12px;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // 链接按钮
+  &.is-link {
+    border-color: transparent;
+    color: @button-primary-bg-color;
+    background: transparent;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: @button-primary-hover-bg-color;
+      border-color: transparent;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    &:active {
+      color: @button-primary-active-bg-color;
+      border-color: transparent;
+      background-color: transparent;
+    }
+
+    &.is-disabled,
+    &:disabled {
+      color: @button-disabled-color;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+}
+
+// 按钮类型样式
+.el-button--default {
+  color: @button-default-color;
+  background-color: @button-default-bg-color;
+  border-color: @button-default-border-color;
+
+  &:hover {
+    color: @button-primary-bg-color;
+    border-color: @button-primary-border-color;
+    background-color: #ecf5ff;
+  }
+
+  &:active {
+    color: @button-primary-active-bg-color;
+    border-color: @button-primary-active-border-color;
+    background-color: #ecf5ff;
+  }
+
+  &.is-plain {
+    color: @button-default-color;
+    background: #ffffff;
+    border-color: @button-default-border-color;
+
+    &:hover,
+    &:focus {
+      color: @button-primary-bg-color;
+      border-color: @button-primary-border-color;
+      background-color: #ecf5ff;
+    }
+
+    &:active {
+      color: @button-primary-active-bg-color;
+      border-color: @button-primary-active-border-color;
+    }
+  }
+}
+
+.el-button--primary {
+  color: @button-primary-color;
+  background-color: @button-primary-bg-color;
+  border-color: @button-primary-border-color;
+
+  &:hover {
+    background: @button-primary-hover-bg-color;
+    border-color: @button-primary-hover-border-color;
+    color: @button-primary-color;
+  }
+
+  &:active {
+    background: @button-primary-active-bg-color;
+    border-color: @button-primary-active-border-color;
+    color: @button-primary-color;
+  }
+
+  &.is-plain {
+    color: @button-plain-primary-color;
+    background: @button-plain-primary-bg-color;
+    border-color: @button-plain-primary-border-color;
+
+    &:hover,
+    &:focus {
+      background: @button-primary-bg-color;
+      border-color: @button-primary-border-color;
+      color: @button-primary-color;
+    }
+
+    &:active {
+      background: @button-primary-active-bg-color;
+      border-color: @button-primary-active-border-color;
+      color: @button-primary-color;
+    }
+  }
+}
+
+.el-button--success {
+  color: @button-success-color;
+  background-color: @button-success-bg-color;
+  border-color: @button-success-border-color;
+
+  &:hover {
+    background: @button-success-hover-bg-color;
+    border-color: @button-success-hover-border-color;
+    color: @button-success-color;
+  }
+
+  &:active {
+    background: @button-success-active-bg-color;
+    border-color: @button-success-active-border-color;
+    color: @button-success-color;
+  }
+
+  &.is-plain {
+    color: @button-plain-success-color;
+    background: @button-plain-success-bg-color;
+    border-color: @button-plain-success-border-color;
+
+    &:hover,
+    &:focus {
+      background: @button-success-bg-color;
+      border-color: @button-success-border-color;
+      color: @button-success-color;
+    }
+
+    &:active {
+      background: @button-success-active-bg-color;
+      border-color: @button-success-active-border-color;
+      color: @button-success-color;
+    }
+  }
+}
+
+.el-button--warning {
+  color: @button-warning-color;
+  background-color: @button-warning-bg-color;
+  border-color: @button-warning-border-color;
+
+  &:hover {
+    background: @button-warning-hover-bg-color;
+    border-color: @button-warning-hover-border-color;
+    color: @button-warning-color;
+  }
+
+  &:active {
+    background: @button-warning-active-bg-color;
+    border-color: @button-warning-active-border-color;
+    color: @button-warning-color;
+  }
+
+  &.is-plain {
+    color: @button-plain-warning-color;
+    background: @button-plain-warning-bg-color;
+    border-color: @button-plain-warning-border-color;
+
+    &:hover,
+    &:focus {
+      background: @button-warning-bg-color;
+      border-color: @button-warning-border-color;
+      color: @button-warning-color;
+    }
+
+    &:active {
+      background: @button-warning-active-bg-color;
+      border-color: @button-warning-active-border-color;
+      color: @button-warning-color;
+    }
+  }
+}
+
+.el-button--danger {
+  color: @button-danger-color;
+  background-color: @button-danger-bg-color;
+  border-color: @button-danger-border-color;
+
+  &:hover {
+    background: @button-danger-hover-bg-color;
+    border-color: @button-danger-hover-border-color;
+    color: @button-danger-color;
+  }
+
+  &:active {
+    background: @button-danger-active-bg-color;
+    border-color: @button-danger-active-border-color;
+    color: @button-danger-color;
+  }
+
+  &.is-plain {
+    color: @button-plain-danger-color;
+    background: @button-plain-danger-bg-color;
+    border-color: @button-plain-danger-border-color;
+
+    &:hover,
+    &:focus {
+      background: @button-danger-bg-color;
+      border-color: @button-danger-border-color;
+      color: @button-danger-color;
+    }
+
+    &:active {
+      background: @button-danger-active-bg-color;
+      border-color: @button-danger-active-border-color;
+      color: @button-danger-color;
+    }
+  }
+}
+
+.el-button--info {
+  color: @button-info-color;
+  background-color: @button-info-bg-color;
+  border-color: @button-info-border-color;
+
+  &:hover {
+    background: @button-info-hover-bg-color;
+    border-color: @button-info-hover-border-color;
+    color: @button-info-color;
+  }
+
+  &:active {
+    background: @button-info-active-bg-color;
+    border-color: @button-info-active-border-color;
+    color: @button-info-color;
+  }
+
+  &.is-plain {
+    color: @button-plain-info-color;
+    background: @button-plain-info-bg-color;
+    border-color: @button-plain-info-border-color;
+
+    &:hover,
+    &:focus {
+      background: @button-info-bg-color;
+      border-color: @button-info-border-color;
+      color: @button-info-color;
+    }
+
+    &:active {
+      background: @button-info-active-bg-color;
+      border-color: @button-info-active-border-color;
+      color: @button-info-color;
+    }
+  }
+}
+
+// 按钮尺寸样式
+.el-button--large {
+  padding: 14px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+
+  &.is-round {
+    padding: 14px 27px;
+  }
+
+  &.is-circle {
+    width: 48px;
+    height: 48px;
+    padding: 14px;
+  }
+}
+
+// .el-button--default 默认尺寸已在基础样式中定义
+
+.el-button--small {
+  padding: 9px 15px;
+  font-size: 12px;
+  border-radius: 3px;
+
+  &.is-round {
+    padding: 9px 18px;
+  }
+
+  &.is-circle {
+    width: 32px;
+    height: 32px;
+    padding: 9px;
+  }
+}
+
+// 禁用状态下的所有类型
+.el-button.is-disabled,
+.el-button:disabled {
+  &.el-button--primary {
+    color: #a0cfff;
+    background-color: #a0cfff;
+    border-color: #a0cfff;
+  }
+
+  &.el-button--success {
+    color: #b3e19d;
+    background-color: #b3e19d;
+    border-color: #b3e19d;
+  }
+
+  &.el-button--warning {
+    color: #f3d19e;
+    background-color: #f3d19e;
+    border-color: #f3d19e;
+  }
+
+  &.el-button--danger {
+    color: #f89898;
+    background-color: #f89898;
+    border-color: #f89898;
+  }
+
+  &.el-button--info {
+    color: #c8c9cc;
+    background-color: #c8c9cc;
+    border-color: #c8c9cc;
+  }
+
+  &.is-plain {
+    &.el-button--primary {
+      color: #8cc8ff;
+      background-color: #ecf5ff;
+      border-color: #d9ecff;
+    }
+
+    &.el-button--success {
+      color: #a4da89;
+      background-color: #f0f9ff;
+      border-color: #e1f3d8;
+    }
+
+    &.el-button--warning {
+      color: #f0c78a;
+      background-color: #fdf6ec;
+      border-color: #faecd8;
+    }
+
+    &.el-button--danger {
+      color: #f5a3a3;
+      background-color: #fef0f0;
+      border-color: #fde2e2;
+    }
+
+    &.el-button--info {
+      color: #bcbec2;
+      background-color: #f4f4f5;
+      border-color: #e9e9eb;
+    }
+  }
+}
+
+// 加载动画
+.el-button.is-loading {
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: el-button-loading 0.6s linear infinite;
+    z-index: 1;
+  }
+}
+
+@keyframes el-button-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// 文本按钮（text button）样式
+.el-button.is-text {
+  border-color: transparent;
+  color: @button-primary-bg-color;
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+
+  &:hover,
+  &:focus {
+    color: @button-primary-hover-bg-color;
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  &:active {
+    color: @button-primary-active-bg-color;
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  &.is-disabled,
+  &:disabled {
+    color: @button-disabled-color;
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+// 按钮组样式（可选，如果后续需要按钮组组件）
+.el-button-group {
+  display: inline-block;
+  vertical-align: middle;
+
+  .el-button {
+    position: relative;
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+
+    &:not(:last-child) {
+      margin-right: -1px;
+    }
+
+    &:hover,
+    &:focus {
+      z-index: 1;
+    }
+
+    &:active {
+      z-index: 2;
+    }
+  }
+}
