@@ -1,0 +1,172 @@
+// ButtonGroup 组件样式
+// 参考 Element Plus 设计风格
+
+.el-button-group {
+  display: flex;
+  vertical-align: middle;
+  width: 100%;
+
+  // 水平布局（默认）
+  &.is-horizontal {
+    .el-button {
+      position: relative;
+      float: left;
+
+      // 第一个按钮：移除右侧圆角，右侧边框颜色调整为半透明
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right-color: rgba(255, 255, 255, 0.5);
+      }
+
+      // 最后一个按钮：移除左侧圆角，左侧边框颜色调整为半透明
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left-color: rgba(255, 255, 255, 0.5);
+      }
+
+      // 中间按钮：移除所有圆角，左右边框颜色都调整为半透明
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+        border-left-color: rgba(255, 255, 255, 0.5);
+        border-right-color: rgba(255, 255, 255, 0.5);
+      }
+
+      // 按钮之间：使用负边距实现边框合并
+      &:not(:last-child) {
+        margin-right: -1px;
+      }
+    }
+
+    // 清除浮动，避免影响后续元素布局
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+
+  // 垂直布局
+  &.is-vertical {
+    display: flex;
+    flex-direction: column;
+
+    .el-button {
+      position: relative;
+      width: 100%;
+
+      // 第一个按钮：移除底部圆角，底部边框颜色调整为半透明
+      &:first-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-color: rgba(255, 255, 255, 0.5);
+      }
+
+      // 最后一个按钮：移除顶部圆角，顶部边框颜色调整为半透明
+      &:last-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top-color: rgba(255, 255, 255, 0.5);
+      }
+
+      // 中间按钮：移除所有圆角，上下边框颜色都调整为半透明
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+        border-top-color: rgba(255, 255, 255, 0.5);
+        border-bottom-color: rgba(255, 255, 255, 0.5);
+      }
+
+      // 按钮之间：使用负边距实现边框合并
+      &:not(:last-child) {
+        margin-bottom: -1px;
+      }
+    }
+  }
+
+  // 按钮组内的按钮通用样式
+  .el-button {
+    // Hover 状态：提升层级，确保边框和阴影效果正确显示
+    &:hover,
+    &:focus {
+      z-index: 1;
+    }
+
+    // Active 状态：进一步提升层级，确保按下效果正确显示
+    &:active {
+      z-index: 2;
+    }
+
+    // Disabled 状态：保持最低层级，避免遮挡其他按钮
+    &.is-disabled,
+    &:disabled {
+      z-index: 0;
+    }
+  }
+
+  // 对齐方式
+  &.is-align-start {
+    justify-content: start;
+  }
+
+  &.is-align-center {
+    justify-content: center;
+  }
+
+  &.is-align-end {
+    justify-content: end;
+  }
+
+  // 间距控制
+  // 当设置 spacing 时，按钮之间会有间距，并恢复按钮的圆角
+  &.is-spacing-start {
+    .el-button {
+      &:not(:first-child) {
+        margin-left: 8px;
+      }
+    }
+
+    &.is-vertical .el-button {
+      &:not(:first-child) {
+        margin-left: 0;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  &.is-spacing-center {
+    .el-button {
+      margin: 0 4px;
+    }
+
+    &.is-vertical .el-button {
+      margin: 4px 0;
+    }
+  }
+
+  &.is-spacing-end {
+    .el-button {
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+
+    &.is-vertical .el-button {
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  // 当有间距时，恢复按钮的圆角和边框颜色
+  &.is-spacing-start,
+  &.is-spacing-center,
+  &.is-spacing-end {
+    .el-button {
+      border-radius: inherit;
+      border-color: inherit;
+    }
+  }
+}
+
