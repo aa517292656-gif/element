@@ -1,0 +1,95 @@
+.el-table {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #606266;
+
+  &--large {
+    font-size: 16px;
+  }
+
+  &--small {
+    font-size: 12px;
+  }
+
+  &__inner {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background-color: #fff;
+  }
+
+  &__cell {
+    padding: 12px;
+    border-bottom: 1px solid #ebeef5;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__cell--header {
+    font-weight: 500;
+    color: #909399;
+    background-color: #f5f7fa;
+    user-select: none;
+    cursor: default;
+  }
+
+  &__row:hover > &__cell {
+    background-color: #f5f7fa;
+  }
+
+  &__row.is-current > &__cell {
+    background-color: #ecf5ff;
+  }
+
+  &.is-stripe tbody tr:nth-child(2n) > &__cell {
+    background-color: #fafafa;
+  }
+
+  &.is-border &__inner,
+  &.is-border &__cell {
+    border: 1px solid #ebeef5;
+  }
+
+  &__cell--selection {
+    width: 48px;
+    text-align: center;
+  }
+
+  &__empty {
+    text-align: center;
+    color: #909399;
+    padding: 20px 0;
+  }
+
+  &__loading {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #409eff;
+    font-size: 14px;
+    z-index: 1;
+  }
+
+  &__sort-icons {
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 4px;
+    font-size: 10px;
+    color: #c0c4cc;
+
+    .sort-icon {
+      line-height: 10px;
+
+      &.is-active {
+        color: #409eff;
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
-import { ElButton, ElButtonGroup } from "@element/components";
+import { ElButton, ElButtonGroup, ElTable } from "@element/components";
 import type {Plugin} from 'vue'
 export const components: Plugin[] = [
   ElButton,
-  ElButtonGroup
+  ElButtonGroup,
+  ElTable
 ]
